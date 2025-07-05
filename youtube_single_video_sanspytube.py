@@ -41,7 +41,7 @@ transcript = YouTubeTranscriptApi.get_transcript(video_id)
 
 # Format transcript using TextFormatter from youtube_transcript_api library
 formatter = TextFormatter()
-transcript_text = formatter.format_transcript(transcript)
+transcript_text = "\n".join(item['text'] for item in transcript)   # formatter.format_transcript(transcript)
 
 # Write transcript text to a text file named after the video title
 safe_title = "".join([c if c.isalnum() or c.isspace() else "_" for c in video_title])  # Remove unsafe characters
